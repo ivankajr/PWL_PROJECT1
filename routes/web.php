@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\DokterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Route::get('home', function(){
     return view('home');
 });
+
+Route::get('/dokter', 'App\Http\Controllers\DokterController@data');

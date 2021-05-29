@@ -71,10 +71,10 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Home</a>
+                        <a href="{{ url('home') }}"><i class="fa fa-fw fa-dashboard"></i> Home</a>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-user-md"></i> Dokter</a>
+                        <a href="{{ url('dokter') }}"><i class="fa fa-fw fa-user-md"></i> Dokter</a>
                     </li>
                     <li class="active">
                         <a href="tables.html"><i class="fa fa-fw fa-money"></i> Transanksi</a>
