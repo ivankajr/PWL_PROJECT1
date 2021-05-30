@@ -16,8 +16,8 @@ class CreateHewanTable extends Migration
         Schema::create('hewan', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('pemilik_id')->unsigned();
+            $table->bigInteger('jenishewan_id')->unsigned();
             $table->string('nama_hewan');
-            $table->string('jenis_hewan');
             $table->string('jenis_kelamin');
             $table->string('spesies');
             $table->timestamps();
@@ -25,6 +25,10 @@ class CreateHewanTable extends Migration
 
         Schema::table('hewan', function (Blueprint $table) {
             $table->foreign('pemilik_id')->references('id')->on('pemilik')
+            ->onDelete('cascade')->onUpdate('cascade');
+        });
+        Schema::table('jenishewan', function (Blueprint $table) {
+            $table->foreign('jenishewan_id')->references('id')->on('jenishewan')
             ->onDelete('cascade')->onUpdate('cascade');
         });
     }

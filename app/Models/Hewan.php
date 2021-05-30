@@ -10,9 +10,12 @@ class Hewan extends Model
     public $table = "hewan";
 
     protected $fillable = [
-        'nama_hewan', 'jenis_hewan', 'jenis_kelamin', 'spesies'
+        'nama_hewan',  'jenis_kelamin', 'spesies'
     ];
     public function pemilik(){
         return $this->belongsTo(Pemilik::class);
+    }
+    public function jenishewan(){
+        return $this->belongsTo(Jenishewan::class);
     }
 }
