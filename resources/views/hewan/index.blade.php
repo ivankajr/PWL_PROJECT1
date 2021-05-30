@@ -63,7 +63,7 @@
                                    <td>{{ $item->id }}</td>
                                    <td>{{ $item->nama_hewan }}</td>
                                    <td>{{ $item->pemilik->nama_pemilik }}</td>
-                                   <td>{{ $item->jenis_hewan }}</td>
+                                   <td>{{ $item->jenishewan->jenis_hewan }}</td>
                                    <td>{{ $item->jenis_kelamin }}</td>
                                    <td>{{ $item->spesies  }}</td>
                                    <td class="text-center">
