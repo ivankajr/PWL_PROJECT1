@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\DokterController;
+// use App\Http\Controllers\HewanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +25,8 @@ Route::get('home', function(){
 Route::get('dokter', 'App\Http\Controllers\DokterController@data');
 Route::get('dokter/add', 'App\Http\Controllers\DokterController@add');
 Route::post('dokter', 'App\Http\Controllers\DokterController@addProcess');
-Route::get('dokter/edit{id}', 'App\Http\Controllers\DokterController@addProcess');
+Route::get('dokter/edit/{id_dokter}', 'App\Http\Controllers\DokterController@edit');
+Route::patch('dokter/{id_dokter}', 'App\Http\Controllers\DokterController@editProcess');
+Route::delete('dokter/{id_dokter}', 'App\Http\Controllers\DokterController@delete');
+
+Route::resource('hewan','App\Http\Controllers\HewanController');

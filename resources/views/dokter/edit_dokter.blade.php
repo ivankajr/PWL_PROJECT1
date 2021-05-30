@@ -18,7 +18,7 @@
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Data Dokter</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-table"></i> Tambah Data
+                                <i class="fa fa-table"></i> Edit Data
                             </li>
                         </ol>
                     </div>
@@ -35,30 +35,32 @@
         <a href="{{ url('dokter') }}" class="btn btn-secondary btn-sm">
             <i class="fa fa-undo"></i> Back
     </div>
+    </div>
     <div class="card-body">
     <div class="row">
                     <div class="col-lg-6">
-                    <form action="{{ url('dokter') }}" method="post">
+                    <form action="{{ url('dokter/'.$dokter->id_dokter) }}" method="post">
+                    @method('patch')
                     @csrf
                         <form role="form">
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" name="nama_dokter" 
+                                <input type="text" name="nama_dokter" value="{{ $dokter->nama_dokter }}" 
                                 class="form-control" autofocus required>
                             </div>
                             <div class="form-group">
                                 <label>Jenis Kelamin</label>
-                                <input type="text" name="jenis_kelamin" 
+                                <input type="text" name="jenis_kelamin" value="{{ $dokter->jenis_kelamin }}"
                                 class="form-control" autofocus required>
                             </div>
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input type="text" name="alamat" 
+                                <input type="text" name="alamat" value="{{ $dokter->alamat }}"
                                 class="form-control" autofocus required>
                             </div>
                             <div class="form-group">
                                 <label>No Telp</label>
-                                <input type="text" name="no_telp" 
+                                <input type="text" name="no_telp" value="{{ $dokter->no_telp }}"
                                 class="form-control" autofocus required>
                             </div>
                             <button type="submit" class="btn btn-success">Save</button>

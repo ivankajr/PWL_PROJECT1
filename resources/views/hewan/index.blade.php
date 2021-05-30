@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('tittle', 'Dokter')
+@section('tittle', 'Hewan')
 
 @section('page-wrapper')
 <div id="page-wrapper">
@@ -11,11 +11,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dokter
+                            Hewan
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Data Dokter</a>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Data Hewan</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-table"></i> Tables
@@ -37,38 +37,40 @@
         <strong>Data Dokter</strong>
     </div> -->
     <div class="pull-right">
-        <a href="{{ url('dokter/add') }}" class="btn btn-success btn-sm">
+        <a href="{{ url('hewan/add') }}" class="btn btn-success btn-sm">
             <i class="fa fa-plus"></i> Add
         </a>
     </div>
     <div class="card-body table-responsive">
     <div class="row">
                     <div class="col-lg-6">
-                        <h2>Data Dokter</h2>
+                        <h2>Data Hewan</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Dokter</th>
+                                        <th>Nama Hewan</th>
+                                        <th>Nama Pemilik</th>
+                                        <th>Jenis Hewan</th>
                                         <th>Jenis Kelamin</th>
-                                        <th>Alamat</th>
-                                        <th>No Telp.</th>
+                                        <th>Spesies</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   @foreach ($dokter as $item)
+                                   @foreach ($hewan as $item)
                                    <tr>
-                                   <td>{{ $item->id_dokter }}</td>
-                                   <td>{{ $item->nama_dokter }}</td>
+                                   <td>{{ $item->id }}</td>
+                                   <td>{{ $item->nama_hewan }}</td>
+                                   <td>{{ $item->pemilik->nama_pemilik }}</td>
+                                   <td>{{ $item->jenis_hewan }}</td>
                                    <td>{{ $item->jenis_kelamin }}</td>
-                                   <td>{{ $item->alamat }}</td>
-                                   <td>{{ $item->no_telp }}</td>
+                                   <td>{{ $item->spesies  }}</td>
                                    <td class="text-center">
-                                        <a href="{{ url('dokter/edit/'.$item->id_dokter) }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ url('hewan/edit/'.$item->id) }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
                                             </a>
-                                            <form action="{{ url('dokter/'.$item->id_dokter) }}" method="post" class="d-inline"
+                                            <form action="{{ url('hewan/'.$item->id) }}" method="post" class="d-inline"
                                              onsubmit="return confirm('Yakin hapus data')">
                                    @method('delete')
                                    @csrf

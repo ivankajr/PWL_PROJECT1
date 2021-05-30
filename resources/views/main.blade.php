@@ -86,7 +86,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-plus-square"></i> Pasien <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Hewan</a>
+                                <a href="{{ url('hewan') }}">Hewan</a>
                             </li>
                             <li>
                                 <a href="#">Pemilik</a>
