@@ -11,7 +11,22 @@ class DokterController extends Controller
     {
         $dokter = DB::table('dokter')->get();
 
-        return $dokter;
+        // return $dokter;
         return view('dokter.data_dokter', ['dokter' => $dokter]);
+    }
+    public function add()
+    {
+        return view('dokter.add_dokter');
+    }
+
+    public function addProcess(Request $request)
+    {
+        DB::table('dokter')->insert([
+            'nama_dokter' => $request -> nama_dokter ,
+            'jenis_kelamin' => $request -> jenis_kelamin,
+            'alamat' => $request -> alamat,
+            'no_telp' => $request -> no_telp
+        ]);
+        return redirect('dokter') -> with('status','Data Berhasil Di Tambah');
     }
 }

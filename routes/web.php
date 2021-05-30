@@ -22,4 +22,7 @@ Route::get('home', function(){
     return view('home');
 });
 
-Route::get('/dokter', 'App\Http\Controllers\DokterController@data');
+Route::get('dokter', 'App\Http\Controllers\DokterController@data');
+Route::get('dokter/add', 'App\Http\Controllers\DokterController@add');
+Route::post('dokter', 'App\Http\Controllers\DokterController@addProcess');
+Route::get('dokter/edit{id}', 'App\Http\Controllers\DokterController@addProcess');
