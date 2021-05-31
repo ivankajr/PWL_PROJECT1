@@ -9,6 +9,8 @@ class Hewan extends Model
 {
     public $table = "hewan";
 
+    protected $hidden =['created_at', 'updated_at'];
+
     protected $fillable = [
         'nama_hewan',  'jenis_kelamin', 'spesies'
     ];

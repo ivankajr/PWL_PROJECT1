@@ -24,12 +24,10 @@ class CreateHewanTable extends Migration
         });
 
         Schema::table('hewan', function (Blueprint $table) {
-            $table->foreign('pemilik_id')->references('id')->on('pemilik')
-            ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('pemilik_id')->references('id')->on('pemilik');
         });
         Schema::table('jenishewan', function (Blueprint $table) {
-            $table->foreign('jenishewan_id')->references('id')->on('jenishewan')
-            ->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('jenishewan_id')->references('id')->on('jenishewan');
         });
     }
 

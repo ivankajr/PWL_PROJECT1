@@ -34,6 +34,7 @@
     <div class="pull-right">
         <a href="{{ url('dokter') }}" class="btn btn-secondary btn-sm">
             <i class="fa fa-undo"></i> Back
+            </a>
     </div>
     </div>
     <div class="card-body">

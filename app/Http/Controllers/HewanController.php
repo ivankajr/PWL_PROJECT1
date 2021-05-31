@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Hewan;
+use App\Models\Pemilik;
+use App\Models\Jenishewan;
 use Illuminate\Http\Request;
 
 class HewanController extends Controller
@@ -25,7 +27,10 @@ class HewanController extends Controller
      */
     public function create()
     {
-        //
+        $pemilik = Pemilik::all();
+        $jenishewan = Jenishewan::all();
+        return view('hewan.create', compact('pemilik','jenishewan'));
+        // return view('hewan.create', compact('jenishewan'));
     }
 
     /**
@@ -36,7 +41,23 @@ class HewanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'pemilik_id' => 'required',
+            'jenishewan_id' => 'required',
+            'nama_hewan' => 'required',
+            'jenis_kelamin' => 'required',
+            'spesies' => 'required',
+        ]);
+
+        $hewan = new Hewan;
+        $hewan->pemilik_id = $request->get('pemilik_id');
+        $hewan->jenishewan_id = $request->get('jenishewan_id');
+        $hewan->nama_hewan = $request->get('nama_hewan');
+        $hewan->jenis_kelamin = $request->get('jenis_kelamin');
+        $hewan->spesies = $request->get('spesies');
+        $hewan->save();
+
+        return redirect('hewan')->with('status', 'data berhasil ditambah!');
     }
 
     /**
@@ -47,7 +68,8 @@ class HewanController extends Controller
      */
     public function show(Hewan $hewan)
     {
-        //
+        // return $hewan;
+        return view('hewan/show', compact('hewan'));
     }
 
     /**
@@ -58,7 +80,9 @@ class HewanController extends Controller
      */
     public function edit(Hewan $hewan)
     {
-        //
+        $pemilik = Pemilik::all();
+        $jenishewan = Jenishewan::all();
+        return view('hewan/edit', compact('hewan', 'pemilik', 'jenishewan'));
     }
 
     /**
@@ -70,7 +94,21 @@ class HewanController extends Controller
      */
     public function update(Request $request, Hewan $hewan)
     {
-        //
+        $request->validate([
+            'pemilik_id' => 'required',
+            'jenishewan_id' => 'required',
+            'nama_hewan' => 'required',
+            'jenis_kelamin' => 'required',
+            'spesies' => 'required',
+        ]);
+        $hewan->pemilik_id = $request->get('pemilik_id');
+        $hewan->jenishewan_id = $request->get('jenishewan_id');
+        $hewan->nama_hewan = $request->get('nama_hewan');
+        $hewan->jenis_kelamin = $request->get('jenis_kelamin');
+        $hewan->spesies = $request->get('spesies');
+        $hewan->save();
+
+        return redirect('hewan')->with('status', 'data berhasil update!');
     }
 
     /**

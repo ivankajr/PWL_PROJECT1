@@ -37,7 +37,7 @@
         <strong>Data Dokter</strong>
     </div> -->
     <div class="pull-right">
-        <a href="{{ url('hewan/add') }}" class="btn btn-success btn-sm">
+        <a href="{{ url('hewan/create') }}" class="btn btn-success btn-sm">
             <i class="fa fa-plus"></i> Add
         </a>
     </div>
@@ -67,9 +67,12 @@
                                    <td>{{ $item->jenis_kelamin }}</td>
                                    <td>{{ $item->spesies  }}</td>
                                    <td class="text-center">
-                                        <a href="{{ url('hewan/edit/'.$item->id) }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ url('hewan/'.$item->id) }}" class="btn btn-warning btn-sm">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        <a href="{{ url('hewan/'.$item->id.'/edit') }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
-                                            </a>
+                                        </a>
                                             <form action="{{ url('hewan/'.$item->id) }}" method="post" class="d-inline"
                                              onsubmit="return confirm('Yakin hapus data')">
                                    @method('delete')
