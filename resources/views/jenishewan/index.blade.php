@@ -1,6 +1,6 @@
 @extends('main')
 
-@section('tittle', 'Hewan')
+@section('tittle', 'Jenis Hewan')
 
 @section('page-wrapper')
 <div id="page-wrapper">
@@ -37,7 +37,7 @@
         <strong>Data Dokter</strong>
     </div> -->
     <div class="pull-right">
-        <a href="{{ url('hewan/create') }}" class="btn btn-success btn-sm">
+        <a href="{{ url('jenishewan/create') }}" class="btn btn-success btn-sm">
             <i class="fa fa-plus"></i> Add
         </a>
     </div>
@@ -50,30 +50,22 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Nama Hewan</th>
-                                        <th>Nama Pemilik</th>
                                         <th>Jenis Hewan</th>
-                                        <th>Jenis Kelamin</th>
-                                        <th>Spesies</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                    @foreach ($jenishewan as $item)
                                    <tr>
                                    <td>{{ $item->id }}</td>
-                                   <td>{{ $item->nama_hewan }}</td>
-                                   <td>{{ $item->pemilik->nama_pemilik }}</td>
-                                   <td>{{ $item->jenishewan->jenis_hewan }}</td>
-                                   <td>{{ $item->jenis_kelamin }}</td>
-                                   <td>{{ $item->spesies  }}</td>
+                                   <td>{{ $item->jenis_hewan }}</td>
                                    <td class="text-center">
-                                        <a href="{{ url('hewan/'.$item->id) }}" class="btn btn-warning btn-sm">
+                                        <a href="{{ url('jenishewan/'.$item->id) }}" class="btn btn-warning btn-sm">
                                             <i class="fa fa-eye"></i>
                                         </a>
-                                        <a href="{{ url('hewan/'.$item->id.'/edit') }}" class="btn btn-primary btn-sm">
+                                        <a href="{{ url('jenishewan/'.$item->id.'/edit') }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                            <form action="{{ url('hewan/'.$item->id) }}" method="post" class="d-inline"
+                                            <form action="{{ url('jenishewan/'.$item->id) }}" method="post" class="d-inline"
                                              onsubmit="return confirm('Yakin hapus data')">
                                    @method('delete')
                                    @csrf

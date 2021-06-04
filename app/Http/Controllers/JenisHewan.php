@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Jenishewan as jenishewanmodels;
+use App\Models\Jenishewan as jenishewans;
 
 class JenisHewan extends Controller
 {
@@ -14,7 +14,7 @@ class JenisHewan extends Controller
      */
     public function index()
     {
-        $jenishewan = jenishewanmodels::all();
+        $jenishewan = jenishewans::all();
         return view('jenishewan/index', compact('jenishewan'));
     }
 
