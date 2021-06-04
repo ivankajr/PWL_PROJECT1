@@ -30,3 +30,4 @@ Route::patch('dokter/{id_dokter}', 'App\Http\Controllers\DokterController@editPr
 Route::delete('dokter/{id_dokter}', 'App\Http\Controllers\DokterController@delete');
 
 Route::resource('hewan','App\Http\Controllers\HewanController');
+Route::resource('jenishewan','App\Http\Controllers\JenisHewan');

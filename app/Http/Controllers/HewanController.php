@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hewan;
 use App\Models\Pemilik;
-use App\Models\Jenishewan;
+use App\Models\Jenishewan as jenishewanmodels;
 use Illuminate\Http\Request;
 
 class HewanController extends Controller
@@ -119,6 +119,7 @@ class HewanController extends Controller
      */
     public function destroy(Hewan $hewan)
     {
-        //
+        $hewan->delete();
+        return redirect('hewan')->with('status', 'data berhasil dihapus!');
     }
 }

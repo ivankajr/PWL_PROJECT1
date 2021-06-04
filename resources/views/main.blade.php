@@ -100,7 +100,7 @@
                         <a href="index-rtl.html"><i class="fa fa-fw fa-stethoscope"></i> Pelayanan</a>
                     </li>
                     <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-paw"></i> Jenis Hewan</a>
+                        <a href="{{ url('jenishewan') }}"><i class="fa fa-fw fa-paw"></i> Jenis Hewan</a>
                     </li>
                 </ul>
             </div>
