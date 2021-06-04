@@ -89,7 +89,7 @@
                                 <a href="{{ url('hewan') }}">Hewan</a>
                             </li>
                             <li>
-                                <a href="#">Pemilik</a>
+                                <a href="{{ url('pemilik') }}">Pemilik</a>
                             </li>
                         </ul>
                     </li>

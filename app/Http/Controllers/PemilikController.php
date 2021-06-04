@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Hewan;
-use App\Models\Pemilik;
-use App\Models\Jenishewan;
+
+use App\Models\Pemilik as pemiliks;
 use Illuminate\Http\Request;
 
 class PemilikController extends Controller
 {
     public function index()
     {
-        $hewan = Hewan::all();
+        $pemilik = pemiliks::all();
         return view('pemilik/index', compact('pemilik'));
     }
 
@@ -22,9 +21,8 @@ class PemilikController extends Controller
      */
     public function create()
     {
-        $pemilik = Pemilik::all();
-        $jenishewan = Jenishewan::all();
-        return view('pemilik.create', compact('pemilik','jenishewan'));
+        $pemilik = pemiliks::all();
+        return view('pemilik.create', compact('pemilik'));
         // return view('hewan.create', compact('jenishewan'));
     }
 
@@ -37,22 +35,20 @@ class PemilikController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'pemilik_id' => 'required',
-            'jenishewan_id' => 'required',
-            'nama_hewan' => 'required',
+            'nama_pemilik' => 'required',
             'jenis_kelamin' => 'required',
-            'spesies' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
         ]);
 
-        $pemilik = new Pemilik();
-        $pemilik->pemilik_id = $request->get('pemilik_id');
-        $pemilik->jenishewan_id = $request->get('jenishewan_id');
-        $pemilik->nama_hewan = $request->get('nama_hewan');
+        $pemilik = new Pemiliks();
+        $pemilik->nama_pemilik = $request->get('nama_pemilik');
         $pemilik->jenis_kelamin = $request->get('jenis_kelamin');
-        $pemilik->spesies = $request->get('spesies');
+        $pemilik->alamat = $request->get('alamat');
+        $pemilik->no_telp = $request->get('no_telp');
         $pemilik->save();
 
-        return redirect('hewan')->with('status', 'data berhasil ditambah!');
+        return redirect('pemilik')->with('status', 'data berhasil ditambah!');
     }
 
     /**
@@ -61,7 +57,7 @@ class PemilikController extends Controller
      * @param  \App\Models\Hewan  $hewan
      * @return \Illuminate\Http\Response
      */
-    public function show(Pemilik $pemilik)
+    public function show(Pemiliks $pemilik)
     {
         // return $hewan;
         return view('pemilik/show', compact('pemilik'));
@@ -73,11 +69,9 @@ class PemilikController extends Controller
      * @param  \App\Models\Hewan  $hewan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pemilik $pemilik)
+    public function edit(Pemiliks $pemilik)
     {
-        $pemilik = Pemilik::all();
-        $jenishewan = Jenishewan::all();
-        return view('pemilik/edit', compact('hewan', 'pemilik', 'jenishewan'));
+        return view('pemilik/edit', compact('pemilik'));
     }
 
     /**
@@ -87,23 +81,21 @@ class PemilikController extends Controller
      * @param  \App\Models\Hewan  $hewan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pemilik $pemilik)
+    public function update(Request $request, Pemiliks $pemilik)
     {
         $request->validate([
-            'pemilik_id' => 'required',
-            'jenishewan_id' => 'required',
-            'nama_hewan' => 'required',
+            'nama_pemilik' => 'required',
             'jenis_kelamin' => 'required',
-            'spesies' => 'required',
+            'alamat' => 'required',
+            'no_telp' => 'required',
         ]);
-        $pemilik->pemilik_id = $request->get('pemilik_id');
-        $pemilik->jenishewan_id = $request->get('jenishewan_id');
-        $pemilik->nama_hewan = $request->get('nama_hewan');
+        $pemilik->nama_pemilik = $request->get('nama_pemilik');
         $pemilik->jenis_kelamin = $request->get('jenis_kelamin');
-        $pemilik->spesies = $request->get('spesies');
+        $pemilik->alamat = $request->get('alamat');
+        $pemilik->no_telp = $request->get('no_telp');
         $pemilik->save();
 
-        return redirect('hewan')->with('status', 'data berhasil update!');
+        return redirect('pemilik')->with('status', 'data berhasil update!');
     }
 
     /**
@@ -112,9 +104,10 @@ class PemilikController extends Controller
      * @param  \App\Models\Hewan  $hewan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Hewan $hewan)
+    public function destroy(Pemiliks $pemilik)
     {
-        //
+        $pemilik->delete();
+        return redirect('pemilik')->with('status', 'data berhasil dihapus!');
     }
 }
 
