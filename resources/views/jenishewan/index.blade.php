@@ -44,7 +44,7 @@
     <div class="card-body table-responsive">
     <div class="row">
                     <div class="col-lg-6">
-                        <h2>Data Hewan</h2>
+                        <h2>Data Jenis Hewan</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>

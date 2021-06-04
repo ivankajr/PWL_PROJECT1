@@ -30,8 +30,5 @@ Route::patch('dokter/{id_dokter}', 'App\Http\Controllers\DokterController@editPr
 Route::delete('dokter/{id_dokter}', 'App\Http\Controllers\DokterController@delete');
 
 Route::resource('hewan','App\Http\Controllers\HewanController');
-<<<<<<< HEAD
 Route::resource('jenishewan','App\Http\Controllers\JenisHewan');
-=======
 Route::resource('pemilik','App\Http\Controllers\PemilikController');
->>>>>>> 6e6cbec8635627005cef988df3c07bbdcedc00ae

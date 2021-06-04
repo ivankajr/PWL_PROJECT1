@@ -25,7 +25,8 @@ class JenisHewan extends Controller
      */
     public function create()
     {
-        //
+        $jenishewan = jenishewans::all();
+        return view('jenishewan.create', compact('jenishewan'));
     }
 
     /**
@@ -36,7 +37,15 @@ class JenisHewan extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'jenis_hewan' => 'required'
+        ]);
+
+        $jenishewan = new jenishewans;
+        $jenishewan->jenis_hewan = $request->get('jenis_hewan');
+        $jenishewan->save();
+
+        return redirect('jenishewan')->with('status', 'data berhasil ditambah!');
     }
 
     /**
@@ -45,9 +54,9 @@ class JenisHewan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(jenishewans $jenishewan)
     {
-        //
+        return view('jenishewan/show', compact('jenishewan'));
     }
 
     /**
@@ -56,9 +65,10 @@ class JenisHewan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Jenishewans $jenishewan)
     {
-        //
+        // $jenishewan = Jenishewans::all();
+        return view('jenishewan/edit', compact('jenishewan'));
     }
 
     /**
@@ -68,9 +78,15 @@ class JenisHewan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Jenishewans $jenishewan)
     {
-        //
+        $request->validate([
+            'jenis_hewan' => 'required'
+        ]);
+        $jenishewan->jenis_hewan = $request->get('jenis_hewan');
+        $jenishewan->save();
+
+        return redirect('jenishewan')->with('status', 'data berhasil update!');
     }
 
     /**
@@ -79,8 +95,9 @@ class JenisHewan extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(jenishewans $jenishewan)
     {
-        //
+        $jenishewan->delete();
+        return redirect('jenishewan')->with('status', 'data berhasil dihapus!');
     }
 }

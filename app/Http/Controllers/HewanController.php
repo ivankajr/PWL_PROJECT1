@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Hewan;
 use App\Models\Pemilik;
-use App\Models\Jenishewan as jenishewanmodels;
+use App\Models\Jenishewan;
 use Illuminate\Http\Request;
 
 class HewanController extends Controller
