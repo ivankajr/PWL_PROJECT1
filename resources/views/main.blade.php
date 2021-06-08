@@ -94,7 +94,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Obat</a>
+                        <a href="{{ url('obat') }}"> Obat</a>
                     </li>
                     <li>
                         <a href="index-rtl.html"><i class="fa fa-fw fa-stethoscope"></i> Pelayanan</a>
