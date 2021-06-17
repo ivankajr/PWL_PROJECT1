@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class PelayananSeeder extends Seeder
 {
@@ -13,6 +15,9 @@ class PelayananSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::table('pelayanans')->insert([[
+            'jenis_pelayanan' => 'Grooming Hewan',
+            'harga' => '40000',
+        ]]);
     }
 }
