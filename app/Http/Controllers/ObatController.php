@@ -14,7 +14,8 @@ class ObatController extends Controller
      */
     public function index()
     {
-        $obats = obat::all();
+        $obat  = obat::all();
+        return view('obat/index', compact('obat'));
     }
 
     /**
@@ -24,7 +25,7 @@ class ObatController extends Controller
      */
     public function create()
     {
-        return view('obats.create');
+        $obat = obat::all();
         return view('obat.create', compact('obat'));
     }
     
@@ -38,26 +39,30 @@ class ObatController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id' => 'required',
             'nama_obat' => 'required',
             'jenis_obat' => 'required',
-            'spesies' => 'required',
-            'harga_obat' => 'required',
+            'stock' => 'required',
+            'harga' => 'required',
 
         ]);
-    Obat::create($request->all());
+        $obat = new obat;
+        $obat->nama_obat = $request->get('nama_obat');
+        $obat->jenis_obat = $request->get('jenis_obat');
+        $obat->stock = $request->get('stock');
+        $obat->harga = $request->get('harga');
+        $obat->save();
 
-    return redirect('obat')->with('status', 'data berhasil ditambah!');
+        return redirect('obat')->with('status', 'data berhasil ditambah!');
 
     }
 
-    /**
+    /** 
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(obat $obat)
     {
         return view('obat/show', compact('obat'));
     }
@@ -68,7 +73,7 @@ class ObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(obat $obat)
     {
         return view('obat/edit', compact('obat'));
     }
@@ -80,12 +85,17 @@ class ObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, obat $obat)
     {
         $request->validate([
             'obat' => 'required'
         ]);
-        
+        $obat->obat = $request->get('nama_obat');
+        $obat->obat = $request->get('jenis_obat');
+        $obat->obat = $request->get('stock');
+        $obat->obat = $request->get('harga');
+        $jenishewan->save();
+        return redirect('obats')->with('status', 'data berhasil update!');
        
 
         
@@ -97,8 +107,9 @@ class ObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(obats $obat)
     {
-        //
+        $obat->delete();
+        return redirect('obat')->with('status', 'data berhasil dihapus!');
     }
 }

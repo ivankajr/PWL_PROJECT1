@@ -11,11 +11,11 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Jenis obat
+                            Data obat
                         </h1>
                         <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Data Jenis Obat</a>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Data Obat</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-table"></i> Tables
@@ -54,7 +54,7 @@
                                    <td>{{ $obat->id }}</td>
                                    <td>{{ $obat->nama_obat }}</td>
                                    <td>{{ $obat->jenis_obat }}</td>
-                                   <td>{{ $obat->spesies }}</td>
+                                   <td>{{ $obat->stock }}</td>
                                    <td>{{ $obat->harga }}</td>
                                    <td class="text-center">
                                         <a href="{{ url('obat/'.$obat->id) }}" class="btn btn-warning btn-sm">
@@ -63,7 +63,7 @@
                                         <a href="{{ url('obat/'.$obat->id.'/edit') }}" class="btn btn-primary btn-sm">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                            <form action="{{ url('obat/'.$obat->id) }}" method="post" class="d-inline"
+                                            <form action="{{ url('obat/'.$obat  ->id) }}" method="post" class="d-inline"
                                              onsubmit="return confirm('Yakin hapus data')">
                                    @method('delete')
                                    @csrf

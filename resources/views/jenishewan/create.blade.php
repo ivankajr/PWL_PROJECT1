@@ -16,7 +16,6 @@
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Data Jenis Hewan</a>
-                            </li>
                             <li class="active">
                                 <i class="fa fa-table"></i> Tambah Data Jenis Hewan
                             </li>

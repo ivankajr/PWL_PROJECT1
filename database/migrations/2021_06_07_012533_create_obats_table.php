@@ -17,8 +17,8 @@ class CreateObatsTable extends Migration
             $table->id();
             $table->string('nama_obat');
             $table->string('jenis_obat');
-            $table->string('spesies');
-            $table->string('harga_obat');
+            $table->integer('stock');
+            $table->integer('harga');
             $table->timestamps();
         });
     }

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class obat extends Model
 {
-    public $table = "obat";
-
+    protected $table = "obats";
+    public $timestamps = false;
     protected $fillable = [
-        'id', 'nama_obat', 'jenis_obat', 'spesies', 'harga_obat'
+        'nama_obat', 'jenis_obat', 'stock', 'harga'
     ];
 }
