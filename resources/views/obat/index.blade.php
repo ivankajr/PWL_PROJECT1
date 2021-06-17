@@ -47,7 +47,16 @@
                         <h2>Data Jenis obat</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover table-striped">
-                                
+                            <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Obat</th>
+                                        <th>Jenis Obat</th>
+                                        <th>Stock Obat</th>
+                                        <th>Harga Obat</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
                                    @foreach ($obat as $obat)
                                    <tr>

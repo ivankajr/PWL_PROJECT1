@@ -88,14 +88,17 @@ class ObatController extends Controller
     public function update(Request $request, obat $obat)
     {
         $request->validate([
-            'obat' => 'required'
+            'nama_obat' => 'required',
+            'jenis_obat' => 'required',
+            'stock' => 'required',
+            'harga' => 'required',
         ]);
-        $obat->obat = $request->get('nama_obat');
-        $obat->obat = $request->get('jenis_obat');
-        $obat->obat = $request->get('stock');
-        $obat->obat = $request->get('harga');
-        $jenishewan->save();
-        return redirect('obats')->with('status', 'data berhasil update!');
+        $obat->nama_obat = $request->get('nama_obat');
+        $obat->jenis_obat = $request->get('jenis_obat');
+        $obat->stock = $request->get('stock');
+        $obat->harga = $request->get('harga');
+        $obat->save();
+        return redirect('obat')->with('status', 'data berhasil update!');
        
 
         
@@ -107,7 +110,7 @@ class ObatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(obats $obat)
+    public function destroy(obat $obat)
     {
         $obat->delete();
         return redirect('obat')->with('status', 'data berhasil dihapus!');
