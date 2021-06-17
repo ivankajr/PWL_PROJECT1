@@ -14,7 +14,8 @@ class PelayananController extends Controller
      */
     public function index()
     {
-        //
+        $pelayanan  = pelayanan::all();
+        return view('pelayanan/index', compact('pelayanan'));
     }
 
     /**
@@ -24,7 +25,8 @@ class PelayananController extends Controller
      */
     public function create()
     {
-        //
+        $pelayanan = pelayanan::all();
+        return view('pelayanan.create', compact('pelayanan'));
     }
 
     /**
@@ -35,7 +37,17 @@ class PelayananController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'jenis_pelayanan' => 'required',
+            'harga' => 'required',
+
+        ]);
+        $pelayanan = new pelayanan;
+        $pelayanan->jenis_pelayanan = $request->get('jenis_pelayanan');
+        $pelayanan->harga = $request->get('harga');
+        $pelayanan->save();
+
+        return redirect('pelayanan')->with('status', 'data berhasil ditambah!');
     }
 
     /**
@@ -46,7 +58,7 @@ class PelayananController extends Controller
      */
     public function show(pelayanan $pelayanan)
     {
-        //
+        return view('pelayanan/show', compact('pelayanan'));
     }
 
     /**
@@ -57,7 +69,7 @@ class PelayananController extends Controller
      */
     public function edit(pelayanan $pelayanan)
     {
-        //
+        return view('pelayanan/edit', compact('pelayanan'));
     }
 
     /**
@@ -69,7 +81,14 @@ class PelayananController extends Controller
      */
     public function update(Request $request, pelayanan $pelayanan)
     {
-        //
+        $request->validate([
+            'jenis_pelayanan' => 'required',
+            'harga' => 'required',
+        ]);
+        $pelayanan->jenis_pelayanan = $request->get('jenis_pelayanan');
+        $pelayanan->harga = $request->get('harga');
+        $pelayanan->save();
+        return redirect('pelayanan')->with('status', 'data berhasil update!');
     }
 
     /**
@@ -80,6 +99,7 @@ class PelayananController extends Controller
      */
     public function destroy(pelayanan $pelayanan)
     {
-        //
+        $pelayanan->delete();
+        return redirect('pelayanan')->with('status', 'data berhasil dihapus!');
     }
 }

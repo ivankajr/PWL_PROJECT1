@@ -33,3 +33,4 @@ Route::resource('hewan','App\Http\Controllers\HewanController');
 Route::resource('jenishewan','App\Http\Controllers\JenisHewan');
 Route::resource('pemilik','App\Http\Controllers\PemilikController');
 Route::resource('obat','App\Http\Controllers\ObatController');
+Route::resource('pelayanan','App\Http\Controllers\PelayananController');

@@ -97,7 +97,7 @@
                         <a href="{{ url('obat') }}"><i class="fa fa-fw fa-medkit"></i> Obat</a>
                     </li>
                     <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-stethoscope"></i> Pelayanan</a>
+                        <a href="{{ url('pelayanan') }}"><i class="fa fa-fw fa-stethoscope"></i> Pelayanan</a>
                     </li>
                     <li>
                         <a href="{{ url('jenishewan') }}"><i class="fa fa-fw fa-paw"></i> Jenis Hewan</a>
