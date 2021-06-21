@@ -48,6 +48,11 @@
                 <input type="text" name="nama_hewan" class="form-control" id="nama_hewan" value="{{ $hewan->nama_hewan }}" ariadescribedby="nama_hewan" >
             </div>
             <div class="form-group">
+                <label for="image">Foto</label>
+                <input type="file" class="form-control" required="required" name="image" value="{{$hewan->foto}}"></br>
+                <img width="150px" src="{{asset('storage/'.$hewan->foto)}}">
+            </div>
+            <div class="form-group">
                 <label for="pemilik_id">Nama Pemilik</label>
                 <select name="pemilik_id" class="form-control">
                         <option value="">-pilih-</option>

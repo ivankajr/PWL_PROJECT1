@@ -51,6 +51,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Hewan</th>
+                                        <th>Foto</th>
                                         <th>Nama Pemilik</th>
                                         <th>Jenis Hewan</th>
                                         <th>Jenis Kelamin</th>
@@ -62,6 +63,9 @@
                                    <tr>
                                    <td>{{ $item->id }}</td>
                                    <td>{{ $item->nama_hewan }}</td>
+                                   <td>
+                                   <img width="100px" src="{{asset('storage/'.$item->foto)}}" alt="image" style="object-fit: cover">
+                                   </td>
                                    <td>{{ $item->pemilik->nama_pemilik }}</td>
                                    <td>{{ $item->jenishewan->jenis_hewan }}</td>
                                    <td>{{ $item->jenis_kelamin }}</td>

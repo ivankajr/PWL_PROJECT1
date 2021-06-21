@@ -47,14 +47,19 @@ class HewanController extends Controller
             'nama_hewan' => 'required',
             'jenis_kelamin' => 'required',
             'spesies' => 'required',
+            'image' => 'required'
         ]);
-
+        $image_name = "";
+        if($request->file('image')) {
+            $image_name = $request->file('image')->store('images', 'public');
+        }
         $hewan = new Hewan;
         $hewan->pemilik_id = $request->get('pemilik_id');
         $hewan->jenishewan_id = $request->get('jenishewan_id');
         $hewan->nama_hewan = $request->get('nama_hewan');
         $hewan->jenis_kelamin = $request->get('jenis_kelamin');
         $hewan->spesies = $request->get('spesies');
+        $hewan->foto = $image_name;
         $hewan->save();
 
         return redirect('hewan')->with('status', 'data berhasil ditambah!');
@@ -101,11 +106,16 @@ class HewanController extends Controller
             'jenis_kelamin' => 'required',
             'spesies' => 'required',
         ]);
+        if($hewan->foto && file_exists('app/public/' . $hewan->foto)) {
+            \Storage::delete('public/' . $hewan->foto);
+        }
         $hewan->pemilik_id = $request->get('pemilik_id');
         $hewan->jenishewan_id = $request->get('jenishewan_id');
         $hewan->nama_hewan = $request->get('nama_hewan');
         $hewan->jenis_kelamin = $request->get('jenis_kelamin');
         $hewan->spesies = $request->get('spesies');
+        $image_name = $request->file('image')->store('images', 'public');
+        $hewan->foto = $image_name;
         $hewan->save();
 
         return redirect('hewan')->with('status', 'data berhasil update!');
