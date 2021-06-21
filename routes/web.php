@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HewanController;
 
@@ -14,12 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('home', function(){
-    return view('home');
 });
 
 Route::get('dokter', 'App\Http\Controllers\DokterController@data');
@@ -34,6 +33,10 @@ Route::resource('jenishewan','App\Http\Controllers\JenisHewan');
 Route::resource('pemilik','App\Http\Controllers\PemilikController');
 Route::resource('obat','App\Http\Controllers\ObatController');
 Route::resource('pelayanan','App\Http\Controllers\PelayananController');
+
+Auth::routes();
+Route::get('/Login', [App\Http\Controllers\LoginController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
