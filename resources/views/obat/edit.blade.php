@@ -46,6 +46,11 @@
                 <input type="text" name="nama_obat" class="form-control" id="nama_obat" value="{{ $obat->nama_obat }}" ariadescribedby="nama_obat" >
             </div>
             <div class="form-group">
+                <label for="image">Foto</label>
+                <input type="file" class="form-control" required="required" name="image" value="{{$obat->foto}}"></br>
+                <img width="150px" src="{{asset('storage/'.$obat->foto)}}">
+            </div>
+            <div class="form-group">
                 <label for="jenis_obat">Jenis Obat</label>
                 <input type="text" name="jenis_obat" class="form-control" id="jenis_obat" value="{{ $obat->jenis_obat }}" ariadescribedby="jenis_obat" >
             </div>

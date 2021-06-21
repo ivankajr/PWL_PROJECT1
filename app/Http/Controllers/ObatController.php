@@ -43,13 +43,19 @@ class ObatController extends Controller
             'jenis_obat' => 'required',
             'stock' => 'required',
             'harga' => 'required',
+            'image' => 'required'
 
         ]);
+        $image_name = "";
+        if($request->file('image')) {
+            $image_name = $request->file('image')->store('images', 'public');
+        }
         $obat = new obat;
         $obat->nama_obat = $request->get('nama_obat');
         $obat->jenis_obat = $request->get('jenis_obat');
         $obat->stock = $request->get('stock');
         $obat->harga = $request->get('harga');
+        $obat->foto = $image_name;
         $obat->save();
 
         return redirect('obat')->with('status', 'data berhasil ditambah!');
@@ -93,10 +99,15 @@ class ObatController extends Controller
             'stock' => 'required',
             'harga' => 'required',
         ]);
+        if($obat->foto && file_exists('app/public/' . $obat->foto)) {
+            \Storage::delete('public/' . $obat->foto);
+        }
         $obat->nama_obat = $request->get('nama_obat');
         $obat->jenis_obat = $request->get('jenis_obat');
         $obat->stock = $request->get('stock');
         $obat->harga = $request->get('harga');
+        $image_name = $request->file('image')->store('images', 'public');
+        $obat->foto = $image_name;
         $obat->save();
         return redirect('obat')->with('status', 'data berhasil update!');
        

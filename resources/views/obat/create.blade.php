@@ -45,6 +45,10 @@
             <input type="text" name="nama_obat" class="form-control" id="nama_obat" aria-describedby="nama_obat" >
         </div>
         <div class="form-group">
+            <label for="image">Foto: </label>
+            <input type="file" class="form-control" required="required" name="image">
+        </div>
+        <div class="form-group">
             <label for="jenis_obat">Jenis Obat</label>
             <input type="text" name="jenis_obat" class="form-control" id="jenis_obat" aria-describedby="jenis_obat" >
         </div>

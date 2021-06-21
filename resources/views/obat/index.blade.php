@@ -51,6 +51,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Obat</th>
+                                        <th>Foto</th>
                                         <th>Jenis Obat</th>
                                         <th>Stock Obat</th>
                                         <th>Harga Obat</th>
@@ -62,6 +63,9 @@
                                    <tr>
                                    <td>{{ $obat->id }}</td>
                                    <td>{{ $obat->nama_obat }}</td>
+                                   <td>
+                                   <img width="100px" src="{{asset('storage/'.$obat->foto)}}" alt="image" style="object-fit: cover">
+                                   </td>
                                    <td>{{ $obat->jenis_obat }}</td>
                                    <td>{{ $obat->stock }}</td>
                                    <td>{{ $obat->harga }}</td>
