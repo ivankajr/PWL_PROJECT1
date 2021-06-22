@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HewanController;
 // use App\Http\Controllers\HewanController;
 
 /*
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('hewan/cetak_data', [HewanController::class, 'cetak_data']);
 Route::get('dokter', 'App\Http\Controllers\DokterController@data');
 Route::get('dokter/add', 'App\Http\Controllers\DokterController@add');
 Route::post('dokter', 'App\Http\Controllers\DokterController@addProcess');
@@ -33,7 +34,6 @@ Route::resource('jenishewan','App\Http\Controllers\JenisHewan');
 Route::resource('pemilik','App\Http\Controllers\PemilikController');
 Route::resource('obat','App\Http\Controllers\ObatController');
 Route::resource('pelayanan','App\Http\Controllers\PelayananController');
-
 Auth::routes();
 Route::get('/Login', [App\Http\Controllers\LoginController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

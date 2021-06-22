@@ -41,6 +41,11 @@
             <i class="fa fa-plus"></i> Add
         </a>
     </div>
+    <div class="pull-right">
+        <a href="{{ url('hewan/cetak_data') }}" class="btn btn-danger btn-sm">
+            <i class="fa fa-print"></i> Cetak
+        </a>
+    </div>
     <div class="card-body table-responsive">
     <div class="row">
                     <div class="col-lg-6">

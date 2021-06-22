@@ -6,6 +6,7 @@ use App\Models\Hewan;
 use App\Models\Pemilik;
 use App\Models\Jenishewan;
 use Illuminate\Http\Request;
+use PDF;
 
 class HewanController extends Controller
 {
@@ -119,6 +120,11 @@ class HewanController extends Controller
         $hewan->save();
 
         return redirect('hewan')->with('status', 'data berhasil update!');
+    }
+    public function cetak_data(){
+        $hewan = Hewan::all();
+        $pdf = PDF::loadview('hewan.hewan_pdf',['hewan'=>$hewan]);
+        return $pdf->stream();
     }
 
     /**
