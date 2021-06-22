@@ -34,6 +34,7 @@ Route::resource('jenishewan','App\Http\Controllers\JenisHewan');
 Route::resource('pemilik','App\Http\Controllers\PemilikController');
 Route::resource('obat','App\Http\Controllers\ObatController');
 Route::resource('pelayanan','App\Http\Controllers\PelayananController');
+Route::resource('transanksi','App\Http\Controllers\TransanksiController');
 Auth::routes();
 Route::get('/Login', [App\Http\Controllers\LoginController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

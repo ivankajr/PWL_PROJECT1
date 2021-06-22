@@ -27,39 +27,13 @@ class TransanksiController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $list_obat = collect();
-
-        if ($request->get('id_pemeriksaan')) {
-            $obat_obatan = ResepObat::with('barang')
-            ->where('id_pemeriksaan', $request->get('id_pemeriksaan'))
-            ->get();
-
-            foreach ($obat_obatan as $obat) {
-                $list_obat->push((object)[
-                    'id_resep_obat' => $obat->id,
-                    'id_barang' => $obat->barang->id,
-                    'nama' => $obat->barang->nama,
-                    'jumlah' => $obat->jumlah,
-                    'harga_satuan' => $obat->barang->harga_satuan,
-                    'total' => $obat->jumlah * $obat->barang->harga_satuan
-                    ]);
-                }
-            Session::put('list_obat', $list_obat);
-        }
-
-        $list_pemeriksaan = Pemeriksaan::with('resep_obat')
-            ->whereHas('resep_obat', function ($query) {
-                $query->withCount('barang')
-                    ->having('barang_count', '>', 0);
-            })
-            ->where('status', 3)
-            ->orderBy('tanggal_pemeriksaan', 'desc')
-            ->orderBy('jam_pemeriksaan', 'asc')
-            ->get();
-
-        return view('kasir.transaksi.obat.create', compact('list_pemeriksaan', 'list_obat'));
+        $pemilik = pmlk::all();
+        $Hewan = hwn::all();
+        $obat = obt::all();
+        $pelayanan = ply::all();
+        return view('transanksi.create', compact('pemilik', 'Hewan', 'obat', 'pelayanan'));
     }
 
     /**
@@ -77,6 +51,13 @@ class TransanksiController extends Controller
             'obat_id' => 'required',
             'harga' => 'required'
         ]);
+        $transanksi = new Transanksi;
+        $transanksi->pemilik_id = $request->get('pemilik_id');
+        $transanksi->hewan_id = $request->get('hewan_id');
+        $transanksi->pelayanan_id = $request->get('pelayanan_id');
+        $transanksi->obat_id = $request->get('obat_id');
+        $transanksi->harga = $request->get('harga');
+        $transanksi->save();
     }
 
     /**
