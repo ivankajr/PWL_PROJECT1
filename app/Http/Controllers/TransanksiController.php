@@ -58,6 +58,9 @@ class TransanksiController extends Controller
         $transanksi->obat_id = $request->get('obat_id');
         $transanksi->harga = $request->get('harga');
         $transanksi->save();
+
+        return redirect('transanksi')->with('status', 'data berhasil ditambah!');
+
     }
 
     /**
