@@ -124,7 +124,7 @@ class HewanController extends Controller
     public function cetak_data(){
         $hewan = Hewan::all();
         $pdf = PDF::loadview('hewan.hewan_pdf',['hewan'=>$hewan]);
-        return $pdf->stream();
+        return $pdf->stream;
     }
 
     /**

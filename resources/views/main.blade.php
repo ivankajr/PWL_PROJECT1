@@ -83,11 +83,11 @@
                         <a href="{{ url('dokter') }}"><i class="fa fa-fw fa-user-md"></i> Dokter</a>
                     </li>
                     <li class="active">
-                        <a href="tables.html"><i class="fa fa-fw fa-money"></i> Transanksi</a>
+                        <a href="{{ url('transanksi') }}"><i class="fa fa-fw fa-money"></i> Transanksi</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Pegawai</a>
-                    </li>
+                    </li> -->
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-plus-square"></i> Pasien <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">

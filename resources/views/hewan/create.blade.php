@@ -46,8 +46,8 @@
             <input type="text" name="nama_hewan" class="form-control" id="nama_hewan" aria-describedby="nama_hewan" >
         </div>
         <div class="form-group">
-            <label for="foto">Foto: </label>
-            <input type="file" class="form-control" required="required" name="foto">
+            <label for="image">Foto: </label>
+            <input type="file" class="form-control" required="required" name="image">
         </div>
         <div class="form-group">
             <label for="pemilik_id">NAMA PEMILIK</label>
